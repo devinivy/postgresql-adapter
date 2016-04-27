@@ -216,7 +216,7 @@ var Adapter = {
   },
 
   _query: function _query(cxn, query, values) {
-    return cxn.knex.raw(_util2['default'].toKnexRawQuery(query, Adapter.wlSqlOptions), _util2['default'].castValues(values)).then(function () {
+    return cxn.knex.raw(_util2['default'].toKnexRawQuery(query), _util2['default'].castValues(values)).then(function () {
       var result = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
       return result;
     });

@@ -338,10 +338,11 @@ var Util = {
   /**
    * Convert a parameterized waterline query into a knex-compatible query string
    */
-  toKnexRawQuery: function toKnexRawQuery(sql, wlSqlOptions) {
+  toKnexRawQuery: function toKnexRawQuery(sql) {
+    var wlSqlOptions = _adapter2['default'].wlSqlOptions;
+
     sql = (sql || '').replace(/\$\d+/g, '?');
-    // Ignore wlSqlOptions if not passed
-    if (!wlSqlOptions || wlSqlOptions.wlNext.caseSensitive) {
+    if (_lodash2['default'].get(wlSqlOptions, 'wlNext.caseSensitive')) {
       sql = sql.replace(/LOWER\(("\w+"."\w+")\)/ig, '$1');
     }
 
